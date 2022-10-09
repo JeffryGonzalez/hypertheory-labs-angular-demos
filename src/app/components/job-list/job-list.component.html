@@ -1,4 +1,17 @@
 <div *appLoading="model$ | async">
+  <h2>This is without any templates.</h2>
+  <p *ngFor="let w of (model$ | async)?.data">
+    {{ w }}
+  </p>
+</div>
+
+<div
+  *appLoading="model$ | async; spinner: loading; empty: empty; errored: errored"
+>
+  <h2>
+    This is with templates for spinner, loading, empty, and errored any
+    templates.
+  </h2>
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
   </p>
@@ -24,9 +37,9 @@
 </ng-template>
 
 <ng-template #empty>
-  <p>Bummer. You have no data!</p>
+  <p>Good news! You have no jobs!</p>
 </ng-template>
 
 <ng-template #errored>
-  <p>Some Error Happened! Try again later</p>
+  <p>Some Error Happened while loading your job list. Try again later</p>
 </ng-template>
