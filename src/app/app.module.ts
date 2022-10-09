@@ -7,7 +7,7 @@ import { HelloComponent } from './hello.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import { LoadingDirective } from './directives/loading.directive';
 
-import { LoadingMessageComponent } from './directives/loading-empty.component';
+import { LoadingMessageComponent } from './directives/loading-message.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],

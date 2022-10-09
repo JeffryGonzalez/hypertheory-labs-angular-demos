@@ -2,11 +2,10 @@ import {
   Directive,
   Input,
   OnChanges,
-  SimpleChanges,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { LoadingEmptyComponent } from './loading-empty.component';
+import { LoadingMessageComponent } from './loading-message.component';
 @Directive({
   selector: '[appLoading]',
 })
@@ -39,7 +38,9 @@ export class LoadingDirective implements OnChanges {
       if (typeof this.errored !== 'string') {
         this.viewContainerRef.createEmbeddedView(this.errored);
       } else {
-        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        const c = this.viewContainerRef.createComponent(
+          LoadingMessageComponent
+        );
         c.instance.message = <string>this.errored;
       }
       return;
@@ -48,7 +49,9 @@ export class LoadingDirective implements OnChanges {
       if (typeof this.spinner !== 'string') {
         this.viewContainerRef.createEmbeddedView(this.spinner);
       } else {
-        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        const c = this.viewContainerRef.createComponent(
+          LoadingMessageComponent
+        );
         c.instance.message = <string>this.spinner;
       }
       return;
@@ -57,7 +60,9 @@ export class LoadingDirective implements OnChanges {
       if (typeof this.empty !== 'string') {
         this.viewContainerRef.createEmbeddedView(this.empty);
       } else {
-        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        const c = this.viewContainerRef.createComponent(
+          LoadingMessageComponent
+        );
         c.instance.message = <string>this.empty;
       }
       return;
