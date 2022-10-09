@@ -7,8 +7,6 @@ import { HelloComponent } from './hello.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import { LoadingDirective } from './directives/loading.directive';
 
-import { LoadingMessageComponent } from './directives/loading-message.component';
-
 @NgModule({
   imports: [BrowserModule, FormsModule],
   declarations: [
@@ -16,8 +14,6 @@ import { LoadingMessageComponent } from './directives/loading-message.component'
     HelloComponent,
     JobListComponent,
     LoadingDirective,
-
-    LoadingMessageComponent,
   ],
   bootstrap: [AppComponent],
 })
