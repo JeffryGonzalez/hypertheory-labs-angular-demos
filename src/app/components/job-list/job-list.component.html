@@ -1,0 +1,34 @@
+<div
+  *appLoading="model$ | async; spinner: loading; empty: empty; errored: errored"
+>
+  <p *ngFor="let w of (model$ | async)?.data">
+    {{ w }}
+  </p>
+</div>
+<div>
+  <div>
+    <button (click)="switchToLoaded()">Switch to Loaded</button>
+  </div>
+  <div>
+    <button (click)="switchToInitialState()">Switch to Initial State</button>
+  </div>
+  <div>
+    <button (click)="switchToLoadedEmptyState()">
+      Switch to Loaded Empty State
+    </button>
+  </div>
+  <div>
+    <button (click)="switchToLoadedErrorState()">Switch to Error State</button>
+  </div>
+</div>
+<ng-template #loading>
+  <p>Your Data Is Loading</p>
+</ng-template>
+
+<ng-template #empty>
+  <p>Bummer. You have no data!</p>
+</ng-template>
+
+<ng-template #errored>
+  <p>Some Error Happened! Try again later</p>
+</ng-template>
