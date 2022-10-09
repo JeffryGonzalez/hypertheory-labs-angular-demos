@@ -6,14 +6,20 @@
 </div>
 
 <h2>This is with strings as templates.</h2>
-<div *appLoading="model$ | async; spinner: 'Waiting...'; empty: 'Got Nothing', errored: 'Blammo!'">
+<div
+  *appLoading="
+    model$ | async;
+    spinner: 'Waiting...';
+    empty: 'Got Nothing';
+    errored: 'Blammo!'
+  "
+>
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
-  </p> 
+  </p>
 </div>
 <h2>
-  This is with templates for spinner, loading, empty, and errored any
-  templates.
+  This is with templates for spinner, loading, empty, and errored any templates.
 </h2>
 <div
   *appLoading="model$ | async; spinner: loading; empty: empty; errored: errored"
@@ -51,7 +57,7 @@
 </ng-template>
 
 <ng-template #empty>
-  <p>Good news! You have no jobs!</p>
+  <p>Good news! You have no jobs! Take a Break</p>
 </ng-template>
 
 <ng-template #errored>
