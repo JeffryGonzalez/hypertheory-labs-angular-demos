@@ -1,5 +1,5 @@
 <div
-  *appLoading="model$ | async; spinner: loading; empty: empty; errored: errored"
+  *appLoading="model$ | async;  empty: empty; errored: errored"
 >
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
@@ -22,7 +22,7 @@
   </div>
 </div>
 <ng-template #loading>
-  <p>Your Data Is Loading</p>
+  <p>Your Job List Is Loading</p>
 </ng-template>
 
 <ng-template #empty>

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import { LoadingDirective } from './directives/loading.directive';
+import { LoadingLoadingComponent } from './directives/loading-loading.component';
+import { LoadingEmptyComponent } from './directives/loading-empty.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -14,6 +16,8 @@ import { LoadingDirective } from './directives/loading.directive';
     HelloComponent,
     JobListComponent,
     LoadingDirective,
+    LoadingLoadingComponent,
+    LoadingEmptyComponent,
   ],
   bootstrap: [AppComponent],
 })
