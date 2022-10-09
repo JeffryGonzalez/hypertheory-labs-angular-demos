@@ -18,18 +18,18 @@
 </div>
 <div>
   <div>
-    <button (click)="switchToLoaded()">Switch to Loaded</button>
+    <button (click)="switchToLoaded()">Switch to Loaded (data, and loading:false, and empty: false)</button>
   </div>
   <div>
-    <button (click)="switchToInitialState()">Switch to Initial State</button>
+    <button (click)="switchToInitialState()">Switch to Initial State (loading, no errors, no data)</button>
   </div>
   <div>
     <button (click)="switchToLoadedEmptyState()">
-      Switch to Loaded Empty State
+      Switch to Loaded Empty State (loaded: true, data: [])
     </button>
   </div>
   <div>
-    <button (click)="switchToLoadedErrorState()">Switch to Error State</button>
+    <button (click)="switchToLoadedErrorState()">Switch to Error State (errored: true)</button>
   </div>
 </div>
 <ng-template #loading>
