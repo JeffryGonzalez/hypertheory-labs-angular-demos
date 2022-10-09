@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  template: '<p>You have No Data</p>',
+  template: '<p>{{message}}</p>',
 })
-export class LoadingEmptyComponent {}
+export class LoadingMessageComponent {
+  @Input() message = 'You have No Data';
+}

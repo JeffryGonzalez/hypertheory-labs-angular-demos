@@ -1,27 +1,37 @@
+<h2>This is without any templates.</h2>
 <div *appLoading="model$ | async">
-  <h2>This is without any templates.</h2>
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
   </p>
 </div>
 
+<h2>This is with strings as templates.</h2>
+<div *appLoading="model$ | async; spinner: 'Waiting...'; empty: 'Got Nothing', errored: 'Blammo!'">
+  <p *ngFor="let w of (model$ | async)?.data">
+    {{ w }}
+  </p> 
+</div>
+<h2>
+  This is with templates for spinner, loading, empty, and errored any
+  templates.
+</h2>
 <div
   *appLoading="model$ | async; spinner: loading; empty: empty; errored: errored"
 >
-  <h2>
-    This is with templates for spinner, loading, empty, and errored any
-    templates.
-  </h2>
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
   </p>
 </div>
 <div>
   <div>
-    <button (click)="switchToLoaded()">Switch to Loaded (data, and loading:false, and empty: false)</button>
+    <button (click)="switchToLoaded()">
+      Switch to Loaded (data, and loading:false, and empty: false)
+    </button>
   </div>
   <div>
-    <button (click)="switchToInitialState()">Switch to Initial State (loading, no errors, no data)</button>
+    <button (click)="switchToInitialState()">
+      Switch to Initial State (loading, no errors, no data)
+    </button>
   </div>
   <div>
     <button (click)="switchToLoadedEmptyState()">
@@ -29,7 +39,9 @@
     </button>
   </div>
   <div>
-    <button (click)="switchToLoadedErrorState()">Switch to Error State (errored: true)</button>
+    <button (click)="switchToLoadedErrorState()">
+      Switch to Error State (errored: true)
+    </button>
   </div>
 </div>
 <ng-template #loading>

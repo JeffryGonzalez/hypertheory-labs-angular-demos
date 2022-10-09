@@ -6,46 +6,59 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { LoadingLoadingComponent } from './loading-loading.component';
 import { LoadingEmptyComponent } from './loading-empty.component';
-import { LoadingErrorComponent } from './loading-error.component';
 @Directive({
   selector: '[appLoading]',
 })
+/**
+ * The appLoading Directive
+ */
 export class LoadingDirective implements OnChanges {
+  /**
+   * The LoadingModes object. Required.
+   */
   @Input('appLoading') modes: LoadingModes | null = null;
 
-  @Input('appLoadingEmpty') empty: TemplateRef<unknown> | null = null;
-  @Input('appLoadingSpinner') spiner: TemplateRef<unknown> | null = null;
-  @Input('appLoadingErrored') errored: TemplateRef<unknown> | null = null;
+  /**
+   * appLoadingEmpty can be either a string, a reference to a template, or empty.
+   */
+  @Input('appLoadingEmpty') empty: TemplateRef<unknown> | string =
+    'You Have No Data';
+  @Input('appLoadingSpinner') spinner: TemplateRef<unknown> | string =
+    'Your Data is Loading';
+  @Input('appLoadingErrored') errored: TemplateRef<unknown> | string =
+    'There was an Error Loading Your Data';
 
   constructor(
     private viewContainerRef: ViewContainerRef,
     private template: TemplateRef<unknown>
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.viewContainerRef.clear();
     if (this.modes.errored) {
-      if (this.errored) {
+      if (typeof this.errored !== 'string') {
         this.viewContainerRef.createEmbeddedView(this.errored);
       } else {
-        this.viewContainerRef.createComponent(LoadingErrorComponent);
+        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        c.instance.message = <string>this.errored;
       }
       return;
     }
     if (this.modes.loading) {
-      if (this.spiner) {
-        this.viewContainerRef.createEmbeddedView(this.spiner);
+      if (typeof this.spinner !== 'string') {
+        this.viewContainerRef.createEmbeddedView(this.spinner);
       } else {
-        this.viewContainerRef.createComponent(LoadingLoadingComponent);
+        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        c.instance.message = <string>this.spinner;
       }
       return;
     }
     if (this.modes.empty) {
-      if (this.empty) {
+      if (typeof this.empty !== 'string') {
         this.viewContainerRef.createEmbeddedView(this.empty);
       } else {
-        this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        const c = this.viewContainerRef.createComponent(LoadingEmptyComponent);
+        c.instance.message = <string>this.empty;
       }
       return;
     }
