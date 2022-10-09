@@ -6,11 +6,9 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import {
-  LoadingEmptyComponent,
-  LoadingLoadingComponent,
-} from './loading-loading.component';
-
+import { LoadingLoadingComponent } from './loading-loading.component';
+import { LoadingEmptyComponent } from './loading-empty.component';
+import { LoadingErrorComponent } from './loading-error.component';
 @Directive({
   selector: '[appLoading]',
 })
@@ -27,8 +25,12 @@ export class LoadingDirective implements OnChanges {
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
     this.viewContainerRef.clear();
-    if (this.modes.errored && this.errored) {
-      this.viewContainerRef.createEmbeddedView(this.errored);
+    if (this.modes.errored) {
+      if (this.errored) {
+        this.viewContainerRef.createEmbeddedView(this.errored);
+      } else {
+        this.viewContainerRef.createComponent(LoadingErrorComponent);
+      }
       return;
     }
     if (this.modes.loading) {

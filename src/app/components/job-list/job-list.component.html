@@ -1,6 +1,4 @@
-<div
-  *appLoading="model$ | async;  empty: empty; errored: errored"
->
+<div *appLoading="model$ | async">
   <p *ngFor="let w of (model$ | async)?.data">
     {{ w }}
   </p>

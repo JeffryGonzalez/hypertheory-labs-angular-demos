@@ -8,6 +8,7 @@ import { JobListComponent } from './components/job-list/job-list.component';
 import { LoadingDirective } from './directives/loading.directive';
 import { LoadingLoadingComponent } from './directives/loading-loading.component';
 import { LoadingEmptyComponent } from './directives/loading-empty.component';
+import { LoadingErrorComponent } from './directives/loading-error.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -18,6 +19,7 @@ import { LoadingEmptyComponent } from './directives/loading-empty.component';
     LoadingDirective,
     LoadingLoadingComponent,
     LoadingEmptyComponent,
+    LoadingErrorComponent,
   ],
   bootstrap: [AppComponent],
 })
